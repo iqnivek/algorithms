@@ -13,7 +13,6 @@ module LinkedList
       while node.next
         node = node.next
       end
-
       node.next = Node.new(value)
     end
 
