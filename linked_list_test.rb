@@ -7,7 +7,7 @@ class LinkedListTest < Test::Unit::TestCase
     assert_equal 1, node.value
   end
 
-  def test_insertion
+  def test_append
     node = LinkedList::Node.new(1)
     node.append_to_tail(2)
     node.append_to_tail(3)

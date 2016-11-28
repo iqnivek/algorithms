@@ -5,3 +5,7 @@ Testing:
 ```
 ruby linked_list_test.rb
 ```
+
+```
+node LinkedListTest.js
+```

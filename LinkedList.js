@@ -22,7 +22,4 @@ Node.prototype = {
   }
 };
 
-// TODO move to test
-var n = new Node(1);
-n.append(2);
-console.log('' + n);
+module.exports = Node;
