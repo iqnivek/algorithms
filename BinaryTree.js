@@ -13,9 +13,32 @@ BinaryTreeNode.prototype = {
     this.right = new BinaryTreeNode(value);
     return this.right;
   },
+  // in-order traversal for binary search trees
   toString: function() {
     console.log(this);
     return [(this.left || '').toString(), this.value, (this.right || '').toString()].join(' ');
+  },
+  // returns node instance containing value, or null
+  depthFirstSearch: function(value) {
+    var stack = [];
+
+    stack.push(this);
+
+    while(stack.length > 0) {
+      var node = stack.pop();
+      console.log('DFS: checking ' + node.value);
+      if (node.value === value) {
+        return node;
+      }
+
+      if (node.left) {
+        stack.push(node.left);
+      }
+      if (node.right) {
+        stack.push(node.right);
+      }
+    }
+    return null;
   },
   getLongestAndShortestLeafDepths: function() {
     if (!this.left && !this.right) {
@@ -40,3 +63,5 @@ bt.left.left.insertRight(5);
 
 console.log(bt);
 console.log(bt.getLongestAndShortestLeafDepths());
+
+console.log(bt.depthFirstSearch(5));
