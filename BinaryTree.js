@@ -40,6 +40,28 @@ BinaryTreeNode.prototype = {
     }
     return null;
   },
+  // returns node instance containing value, or null
+  breadthFirstSearch: function(value) {
+    var queue = [];
+    queue.push(this);
+
+    while(queue.length > 0) {
+      var node = queue.shift();
+      console.log('BFS: checking ' + node.value);
+
+      if (node.value === value) {
+        return node;
+      }
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    return null;
+  },
   getLongestAndShortestLeafDepths: function() {
     if (!this.left && !this.right) {
       return { longest: 0, shortest: 0 };
@@ -65,3 +87,4 @@ console.log(bt);
 console.log(bt.getLongestAndShortestLeafDepths());
 
 console.log(bt.depthFirstSearch(5));
+console.log(bt.breadthFirstSearch(5));
