@@ -75,6 +75,26 @@ BinaryTreeNode.prototype = {
       shortest: Math.max(leftDepths.longest, rightDepths.longest) + 1
     };
   }
+};
+
+// 4.2 minimal tree
+function buildMinimalTree(arr) {
+  var sortedArr = arr.sort();
+  return helper(arr, 0, arr.length - 1);
+
+  function helper(arr, start, end) {
+    if (start > end) {
+      return null;
+    } else if (start === end) {
+      return new BinaryTreeNode(arr[start]);
+    }
+    var mid = Math.floor((start + end) / 2);
+    var node = new BinaryTreeNode(arr[mid]);
+    node.left = helper(arr, start, mid - 1);
+    node.right = helper(arr, mid + 1, end);
+
+    return node;
+  }
 }
 
 var bt = new BinaryTreeNode(1);
@@ -88,3 +108,6 @@ console.log(bt.getLongestAndShortestLeafDepths());
 
 console.log(bt.depthFirstSearch(5));
 console.log(bt.breadthFirstSearch(5));
+
+var balanced = buildMinimalTree([1, 2, 4, 8, 16, 32, 64]);
+console.log(balanced);
